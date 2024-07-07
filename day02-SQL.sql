@@ -99,12 +99,64 @@ INSERT INTO employees (name, age, salary, email) VALUES (20, 'Kerem', 10000, 'kk
 SELECT * FROM employees;
 
 
+-- ADD PRIMARY KEY CONSTRAINT ---
+
+-- 1ST WAY OF CREATING PRIMARY KEY
+-- Add keyword PRIMARY KEY next to the column after the data type ...
 
 
 
+CREATE TABLE books ( --DDL
+	
+	book_id SERIAL PRIMARY KEY,
+	book_name VARCHAR (30) NOT NULL,
+	publisher_id VARCHAR (30),
+	page_number INT
+	
+);
 
 
+SELECT * FROM books; -- DQL
 
+DROP TABLE books; --DDL
+
+
+-- 2nd way to creation primary key --
+
+CREATE TABLE books1 (  --DDL
+	book_id SERIAL,
+	book_name VARCHAR (30) NOT NULL,
+	publisher_name VARCHAR(30),
+	page_number INT,
+	CONSTRAINT id_pk PRIMARY KEY (book_id)
+);
+
+SELECT * FROM books1;
+
+
+--HOW TO CREATE COMPOSITE PRIMARY KEY ---
+
+CREATE TABLE books2 (  --DDL
+	book_id SERIAL,
+	book_name VARCHAR (30) NOT NULL,
+	publisher_name VARCHAR(30),
+	page_number INT,
+	CONSTRAINT composite_pk PRIMARY KEY (book_id, book_name)
+
+);
+
+
+--HOW TO CREATE FOREIGN KEY ---
+
+CREATE TABLE authors (  --DDL
+	author_id SERIAL,
+	author_name VARCHAR(30) NOT NULL,
+	book_published INT,
+	CONSTRAINT fk_authors FOREIGN KEY (author_id) REFERENCES books1(book_id)
+
+);
+
+SELECT * FROM authors
 
 
 
