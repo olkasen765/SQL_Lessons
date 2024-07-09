@@ -92,10 +92,62 @@ FROM primary_students;
 UPDATE primary_students
 SET student_age = 20;
 
+UPDATE primary_students
+SET student_age = (SELECT MAX(student_age) 
+FROM primary_students);
+
 
 SELECT * FROM primary_students;
 
 
+
+
+CREATE TABLE parents (
+	parent_id CHAR (5) PRIMARY KEY,
+	parent_name TEXT,
+	student_id CHAR (5),
+	parent_address TEXT,
+	parent_dob DATE
+); 
+
+INSERT INTO parents VALUES('2111', 'Adam Brooks', '1111', 'Miami, FL', '1994-10-23');
+INSERT INTO parents VALUES('2112', 'Angie Williams', '1112', 'New York, US', '1987-02-13');
+INSERT INTO parents VALUES('2113', 'Andrew Duffy', '1113', 'Berlin, Germany', '1976-12-05');
+INSERT INTO parents VALUES('2114', 'John Baker', '1114', 'London, UK', '1980-07-07');
+INSERT INTO parents VALUES('2115', 'Lydia Smith', '1115', 'Toront, Canada', '1986-09-24');
+INSERT INTO parents VALUES('2116', 'Dogan Can', '1116', 'Istanbul, Turkiye', '1990-11-11');
+
+
+SELECT * FROM parents;
+
+
+-- WHO IS THE OLDEST IN THE PARENTS TABLE?
+
+SELECT MIN(parent_dob)
+FROM parent;
+
+-- to find name of the oldest parent ...
+SELECT *
+FROM parents
+WHERE parent_dob = (SELECT MIN(parent_dob) FROM parents);
+
+
+
+-- Who is the youngest person in the table ... 
+
+SELECT *
+FROM parents
+WHERE parent_dob = (SELECT MAX(parent_dob) 
+	FROM parents);
+
+
+-- change all date of births to highest date of birth ....
+
+UPDATE parents
+SET parent_dob = (SELECT MIN(parent_dob) FROM parents);
+
+
+SELECT * FROM parents;
 
 
 
