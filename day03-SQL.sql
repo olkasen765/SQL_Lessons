@@ -1,5 +1,5 @@
+--DAY 03---
 
--- DAY 03 --
 
 CREATE TABLE new_employees(
 	id CHAR (5) PRIMARY KEY,
@@ -7,6 +7,7 @@ CREATE TABLE new_employees(
 	salary INT NOT NULL,
 	start_date DATE
 );
+
 
 INSERT INTO new_employees VALUES ('1002', 'Donatello', 12000, '2018-04-14');
 INSERT INTO new_employees VALUES ('1003', null, 5000, '2018-04-14');
@@ -24,6 +25,7 @@ INSERT INTO new_employees VALUES ('1010', 'Betty', 13000, '2023-09-24');
 
 
 SELECT * FROM new_employees;
+
 
 
 
@@ -48,47 +50,128 @@ INSERT INTO addresses VALUES ('1005', 'DisneyLand', '30.Cad.', 'Florida');
 SELECT * FROM addresses;
 
 
+--How to get specific data 
 
--- How to get specific data
-
--- From new_employees table display the name who is getting salary higher than 8000;
+--From new_employees table display the name who is get salary higher than 8000;
 
 SELECT * 
 FROM new_employees
-WHERE salary > 8000;
+WHERE salary> 8000;
 
 
--- From new_employees tabel display the name who is get salary 5000 --
-
-SELECT * 
+--From new_employess table display the name who is get salary 5000....
+SELECT *
 FROM new_employees
 WHERE salary = 5000;
 
--- From new_employees tabel display only id which is getting salary 13 000 --
+--From new_employes table display only id which is gettig salary 13000
 
 SELECT id 
 FROM new_employees
 WHERE salary = 13000;
 
--- From addresses table display the record whose is 1005 id AND city Washington
 
-SELECT * 
+--FROM addresses table display the record whose is 1005 id AND city Washington....
+SELECT *
 FROM addresses
-WHERE address_id = '1005' AND city = 'Washington';
+WHERE address_id = '1003' AND city = 'Washington';
 
-
--- From addresses table display the record whose is id 1003 OR city Washington
-
-SELECT * 
-FROM addresses
-WHERE address_id = '1005' OR city = 'Washington';
-
-
--- From new_employees table display the record who is getting salary less than 10000;
-
+--FROM new_employees table display the record who is getting salary less than 10000;
 SELECT *
 FROM new_employees
 WHERE salary < 10000;
 
 
+--From adresses table display the record where city is Konya or Bursa;
 
+SELECT * 
+FROM addresses
+WHERE city = 'Konya' OR  city = 'Bursa';
+
+
+--From adresses table display the record where city is Konya or Istanbul....
+
+SELECT city FROM addresses 
+WHERE city = 'Konya' OR city = 'Istanbul';
+
+
+
+
+SELECT * FROM new_employees;
+SELECT * FROM addresses;
+
+CREATE TABLE new_students(
+	id SERIAL PRIMARY KEY,
+	first_name VARCHAR (30),
+	last_name VARCHAR (30),
+	exam_score INT
+);
+
+
+INSERT INTO new_students (first_name, last_name, exam_score) VALUES 
+	('Tom', 'Hanks', 85),
+	('Keira', 'Knightly', 92),
+	('Lenardo', 'Dicaprio', 78),
+	('Julia', 'Roberts', 88),
+	('Denzel', 'Washington', 95),
+	('Benedict', 'Cumberbatch', 88),
+	('Brad', 'Pitt', 91),
+	('Russel', 'Crowe', 89),
+	('Emma', 'Watson', 87),
+	('Judy', 'Dench', 97);
+	
+	
+SELECT * FROM new_students;
+
+
+
+-- DELETE FROM-----
+
+--DELETE is DML (Data Manupulation Language)....
+
+-- You can not use DELETE keyword to remove structure in the table.....
+
+
+-- From new_students table delete the record whose first name 'Lenardo'
+DELETE
+FROM new_students
+WHERE first_name = 'Lenardo';
+
+
+--From new_students table delete the record who get 87 score....
+DELETE
+FROM new_students
+WHERE exam_score = 87;
+
+
+--From new_students table delete the record who has id 7...
+
+DELETE
+FROM new_students
+WHERE id = 7;
+
+
+-- TRUNCATE KEYWORD ---
+
+--Truncate (hard) vs DELETE (soft)
+
+-- If you use TRUNCATE keyword you can not revoke data...
+--But if you DELETE keyword you can revoke data.....
+
+--BOTH are used to remove data from tables...
+
+--TRUNCATE IS DDL BUT DELETE IS DML....
+--with DELETE, We can use conditions to filter our query but with TRUNCATE we can not use conditions....
+
+
+
+--DELETE ALL RECORDS from new_students; use TRUNCATE
+
+TRUNCATE  -- DELETE ALL RECORDS IN THE TABLE AND YOU CAN NOT BRING THE DATA ON YOUR QUERY TOOL....
+TABLE new_students;
+
+
+
+SELECT * FROM new_students;
+
+DROP TABLE new_students;  --DROP KEYWORD DELETE STRUCTURE OF TABLE.....
