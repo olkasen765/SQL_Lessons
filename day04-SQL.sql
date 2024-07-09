@@ -82,3 +82,23 @@ FROM primary_students;
 SELECT MAX(student_age) 
 FROM primary_students;
 
+-- Count the rows ....
+SELECT COUNT (student_id)
+FROM primary_students;
+
+
+--UPDATE ALL STUDENTS AGE TO THE MAXIMUM AGE.....
+
+UPDATE primary_students
+SET student_age = 20;
+
+
+SELECT * FROM primary_students;
+
+
+
+
+
+
+
+
