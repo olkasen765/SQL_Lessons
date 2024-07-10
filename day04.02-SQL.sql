@@ -65,16 +65,78 @@ FROM workers;
 
 
 
+--COMBINING AGGEGATE FUNCTION AND UPDATE SET STATEMENT-----
+
+
+--Increase Veli's salary to 20% less than the highest salary.....
+
+
+--First step, we need to find highest salary...
+
+SELECT MAX(worker_salary) FROM workers; --19000
+
+
+--Second step, we need to calculate 20% less than highes salary....
+
+SELECT MAX(worker_salary)*0.8 AS new_salary FROM workers; -- 15200 
+
+
+
+--UPDATE SALARY FOR VELI
+
+--THIS IS HARDCODING
+UPDATE workers
+SET worker_salary = 15200
+WHERE worker_id = 102
+
+
+--DYNAMIC WAY
+UPDATE workers
+SET worker_salary = (SELECT MAX(worker_salary)*0.8 AS new_salary FROM workers)
+WHERE worker_id = 102
+
+
+--Decrease Ali's salary to 30% more than the lowest salary
+
+
+
+--First step, we need to find lowest salary
+
+SELECT MIN(worker_salary) lowest_salary FROM workers;
+
+
+--second we need to calculate 30% more from lowest salary...
+
+SELECT MIN(worker_salary)*1.3 FROM workers;
+
+
+--3rd step we need to decrease Ali's salary
+
+UPDATE workers
+SET worker_salary = (SELECT MIN(worker_salary)*1.3 FROM workers)
+WHERE worker_name = 'Ali Can';
+
+-- Increase the salaries by 1000 bonus if the salaries are less than average salary...
+
+
+--First step, we need to find average salary
+
+SELECT ROUND(AVG(worker_salary) , 1) AS average_salary FROM workers;
+
+
+--second lets see whose getting salary less than average salary
+
+SELECT *
+FROM workers
+WHERE worker_salary < (SELECT AVG(worker_salary) FROM workers );
+
+
+--THIRD STEP TO CHANGE THE SALARIES FOR PEOPLE WHO IS GETTING LESS THAN AVERAGE 
+
+UPDATE workers
+SET worker_salary = worker_salary +1000
+WHERE worker_salary < (SELECT AVG(worker_salary) FROM workers)
+
 
 
 SELECT * FROM workers;
-
-
-
-
-
-
-
-
-
-
