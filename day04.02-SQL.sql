@@ -139,4 +139,14 @@ WHERE worker_salary < (SELECT AVG(worker_salary) FROM workers)
 
 
 
+-- Make the salaries equal to acerage salary if the salaries are less than average salary ....
+
+UPDATE workers
+	SET worker_salary = ROUND((SELECT AVG(worker_salary) FROM workers),1)
+	WHERE worker_salary < (SELECT AVG(worker_salary) FROM workers);
+	
+	
 SELECT * FROM workers;
+
+
+
