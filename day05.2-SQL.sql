@@ -88,3 +88,112 @@ SELECT *
 FROM customers_products
 WHERE product_id <= 20 OR product_id >= 40;
 
+
+
+---------------------- EXIST OPERATOR ---------------------------
+
+-- This operator a little bit tricky, so be careful using it......
+
+CREATE TABLE customers_likes(
+  product_id CHAR(10),
+  customer_name VARCHAR(50),
+  liked_product VARCHAR(50)
+);
+
+INSERT INTO customers_likes VALUES (10, 'Mark', 'Orange');
+INSERT INTO customers_likes VALUES (50, 'Mark', 'Pineapple');
+INSERT INTO customers_likes VALUES (60, 'John', 'Avocado');
+INSERT INTO customers_likes VALUES (30, 'Lary', 'Cherries');
+INSERT INTO customers_likes VALUES (20, 'Mark', 'Apple');
+INSERT INTO customers_likes VALUES (10, 'Adem', 'Orange');
+INSERT INTO customers_likes VALUES (40, 'John', 'Apricot');
+INSERT INTO customers_likes VALUES (20, 'Eddie', 'Apple');
+
+SELECT * FROM customers_likes;
+
+
+-- UPDATE ALL customer_name to 'No Name' if the field has a name 'Hary' .....
+
+-- 1st way to update all customer name ....
+
+UPDATE customers_likes
+SET customer_name = 'No Name'
+WHERE customer_name = 'Hary';
+
+
+-- 2nd way yo update all customer name to 'No Name' if the field has a name 'Hary' ....
+
+UPDATE customers_likes
+	SET customer_name = 'No Name'
+	WHERE EXISTS (SELECT customer_name FROM customers_likes WHERE customer_name = 'Hary');
+
+
+-- UPDATE ALL customer name to 'No name' if the field has a name 'Mark' ....
+
+UPDATE customers_likes
+SET customer_name = 'No Name'
+WHERE customer_name = 'Mark';
+
+
+-- UPDATE ALL customer name to 'No name' if the field has a name 'John' ....
+
+UPDATE customers_likes
+	SET customer_name = 'NO NAME'
+	WHERE EXISTS (SELECT customer_name FROM customers_likes WHERE customer_name = 'John');
+
+
+-- UPDATE ALL CUSTOMER NAME TO 'Some Name' if the field has 'Orange' ...
+
+-- 1st way
+
+UPDATE customers_likes
+	SET customer_name = 'Some Name'
+	WHERE liked_product = 'Orange';
+
+-- 2nd way change all values in customer name to 'SOME NAME' column if liked_product has 'Apricot' ....
+
+UPDATE customers_likes
+	SET customer_name = 'SOME NAME'
+	WHERE EXISTS (SELECT liked_product FROM customers_likes WHERE liked_product = 'Apricot');
+
+
+-- UPDATE ALL customer_name to 'John Doe' if the liked_product field has 'Orange' or 'Pineapple' or 'Avocado' ...
+
+UPDATE customers_likes
+	SET customer_name = 'John Doe'
+	WHERE liked_product IN ('Orange', 'Pineapple', 'Avocado');
+
+
+UPDATE customers_likes
+	SET customer_name = 'John Doe'
+	WHERE EXISTS (SELECT liked_product FROM customers_likes WHERE liked_product IN ('Orange', 'Pineapple', 'Avocado'));
+
+
+
+-------- What is the difference ? -----------------
+-- If you wanna update specific records in a table. DO NOT USE EXISTS OPERATOR. 
+-- BECAUSE EXISTS OPERATOR WORKS WITH A SUBQUERY. IF THAT SUBQUERY RETURNS TRUE, EXISTS OPERATOR UPDATES THE WHOLE FIELD......
+
+
+
+
+-- Delete all records if there is 'Cherries' in the liked_product field in the customer_likes table ....
+
+DELETE 
+FROM customers_likes
+WHERE EXISTS (SELECT liked_product FROM customers_likes WHERE liked_product = 'Cherries');
+
+
+
+
+SELECT * FROM customers_likes;
+
+
+
+
+
+
+
+
+
+
