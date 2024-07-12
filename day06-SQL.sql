@@ -69,7 +69,17 @@ SELECT name, state
 FROM company_employees 
 WHERE company IN (SELECT company FROM companies WHERE company_id = '103');
 
+-- Find employee name and their states whose company_id greater than 101
 
+SELECT name, state
+FROM company_employees 
+WHERE company IN (SELECT company FROM companies WHERE company_id > '101');
+
+
+-- Find the company name, number of employees, average salary paid by each company ....
+
+SELECT company, number_of_employees, ROUND((SELECT AVG(salary) FROM company_employees WHERE company_employees.company = companies.company),1)
+	FROM companies; 
 
 
 SELECT * FROM company_employees;
