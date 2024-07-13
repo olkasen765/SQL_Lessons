@@ -55,6 +55,69 @@ SELECT *
 	WHERE REGEXP_LIKE (word, 'h[aoi](.*)t');
 
 
+/*
+---------NOTES about REGEX (Regular Expressions) with LIKE OPERATOR--------------
+
+   1) Regexp_like operator: we use this operator for search operation
+   
+   Syntax: 
+   SELECT *
+   FROM table_name
+   WHERE REGEXP_LIKE (column_name, 'patter that we are looking for in STRING data')
+   
+   
+   2)REGEXP_LIKE operator works with STRING DATA TYPE
+   
+   3) We can use REGEX operator with ~ sign
+   
+   Sytanx
+   SELECT *
+   FROM table_name
+   WHERE column_name ~  'pattern that we are looking for in STRING data' 
+   
+   
+   4)Symbols 
+   
+    (.*) looks for multiple characters. => works the similiar way as % sign in wildcards; you can use it also without parenthesis .*
+	 
+	. (fullstop) => looks for single character....
+	
+	$ => last character......
+   
+
+*/
+
+
+
+
+--Find words whose first character is ‘h’ , second character can be any ‘o’ , ‘a’ or ‘i’ 
+-- and the last character must be ‘t’.....
+
+SELECT *
+	FROM words
+	WHERE word ~ 'h[aoi](.*)t';
+
+
+--Find words whose first character is ‘h’ , second character can be any from a-f and last character must be 't'
+
+SELECT *
+	FROM words
+	WHERE word ~ 'h[a-f](.*)t';
+
+
+--Find words whose first character is any 'a', 's' or 'y'
+
+SELECT *
+FROM words
+WHERE word ~ '^[asy](.*)'
+
+
+--Find words whose first character is NOT any 'a', 's' or 'y'
+
+SELECT *
+FROM words
+WHERE word ~ '^[^asy](.*)';
+
 
 
 
