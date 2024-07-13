@@ -59,8 +59,22 @@ SELECT *
 FROM email_list
 WHERE email_address LIKE '%v%';
 
-	
-	
+-- Return all records that starts with 'g' and end with 'm' ...
+
+SELECT * 
+FROM email_list
+WHERE email_address LIKE 'g%m';
+
+
+-- Return all records that have 'r' and 'n' at any position ...
+
+SELECT * 
+FROM email_list
+WHERE email_address LIKE '%r%n%' OR email_address LIKE '%n%r%';
+
+
+
+
 SELECT * FROM email_list;
 
 
