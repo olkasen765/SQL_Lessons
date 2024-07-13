@@ -58,16 +58,3 @@ DELETE
 
 SELECT * FROM people;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
