@@ -119,6 +119,32 @@ FROM words
 WHERE word ~ '^[^asy](.*)';
 
 
+--Find words whose last character is 'm', 'o' or 'a'
+
+SELECT *
+FROM words
+WHERE word ~ '(.*)[moa]$';
+
+
+--Find words which start with 't', 's' and end with 'a'
+
+SELECT *
+FROM words
+WHERE word ~ '^[s](.*)[a]$';
+
+
+--$ sign and [] become optinal when you are searching for single character in our query....
+
+--Find words which are start with ‘t’ or ‘s’ and end with ‘a’ or ‘o’;
+
+SELECT *
+FROM words
+WHERE word ~ '^[ts](.*)[ao]$';
+
+
+
+
+
 
 
 SELECT * FROM words;
