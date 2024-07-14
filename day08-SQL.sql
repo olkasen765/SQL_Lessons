@@ -89,6 +89,8 @@ SELECT category, MIN(price) AS min_price, MAX(price) AS max_price, COUNT(item_na
 	GROUP BY category;
 
 
+SELECT * FROM shopping_list;
+
 -- Find total salary for each employee from company_emplyees table ...
 
 SELECT name, SUM(salary) AS total_salary
@@ -97,20 +99,107 @@ SELECT name, SUM(salary) AS total_salary
 
 -- Find number of employees per state in descending order (according to number of employees)
 
-SELECT state, COUNT(name) AS number_of_employees
+SELECT state, COUNT(id) AS number_of_employees
  	FROM company_employees
 	GROUP BY state
 	ORDER BY number_of_employees DESC;
 
 
-
-
-
-SELECT * FROM shopping_list;
 SELECT * FROM company_employees;
 
 
 
+CREATE TABLE new_workers (  
+  id CHAR(9), 
+  name VARCHAR(50), 
+  state VARCHAR(50), 
+  salary SMALLINT,
+  company VARCHAR(20),
+  number_of_employees numeric(5)
+	
+);
+
+
+INSERT INTO new_workers VALUES(123451760, 'Ali Can', 'Pennsylvania', 8000, 'GOOGLE', 90000);
+INSERT INTO new_workers VALUES(123456789, 'John Walker', 'Florida', 2500, 'IBM', 34500);
+INSERT INTO new_workers VALUES(456789012, 'Veli Han', 'Arizona', 4000, 'GOOGLE', 90000);
+INSERT INTO new_workers VALUES(234567890, 'Ayse Gul', 'Florida', 1500, 'APPLE', 45500);
+INSERT INTO new_workers VALUES(345678901, 'Eddie Murphy', 'Texas', 3000, 'IBM', 23700);
+INSERT INTO new_workers VALUES(567890123, 'Yusuf Arturk', 'Washington', 8000, 'APPLE', 45500);
+INSERT INTO new_workers VALUES(456789012, 'Eddie Murphy', 'Virginia', 1000, 'GOOGLE', 90000);
+INSERT INTO new_workers VALUES(567890123, 'Eddie Murphy', 'Texas', 7000, 'MICROSOFT', 60000);
+INSERT INTO new_workers VALUES(456789012, 'Ayse Gul', 'Texas', 1500, 'GOOGLE', 90000);
+INSERT INTO new_workers VALUES(123456710, 'Mark Stone', 'Pennsylvania', 2500, 'IBM', 23700);
+INSERT INTO new_workers VALUES(123456710, 'Ali Can', 'Pennsylvania', 5000, 'IBM', 23700);
+INSERT INTO new_workers VALUES(785690123, 'Fatih Tamer', 'Texas', 9000, 'MICROSOFT', 60000);
+INSERT INTO new_workers VALUES(123456789, 'John Walker', 'Florida', 5000, 'GOOGLE', 90000);
 
 
 
+-- Find total salary for each name ...
+
+SELECT name, SUM(salary) AS total_salary
+ 	FROM new_workers
+	GROUP BY name;
+
+
+-- Find total number of emplyees for each state and order in descending order ...
+
+SELECT state, SUM(number_of_employees) AS total_number_of_employees
+ 	FROM new_workers
+	GROUP BY state
+	ORDER BY total_number_of_employees DESC;
+
+
+-- Find MIN and MAX salary for each company ...
+
+SELECT company, MIN(salary) AS min_salary, MAX(salary) AS max_salary
+ 	FROM new_workers
+	GROUP BY company;
+
+
+-- Find total number of employees (name) for each company which is paying salary more than 4000 ...
+
+SELECT company, COUNT(name) AS number_of_employees
+ 	FROM new_workers
+	WHERE salary > 4000
+	GROUP BY company;
+
+
+-- Find total salary for each employee whose salary more than 5000 ...
+
+SELECT name, SUM(salary) AS total_salary
+ 	FROM new_workers
+	GROUP BY name
+	HAVING SUM(salary) > 5000;  -- HAVING clause is used filter data after GROUP BY 
+
+
+-------------------- HAVING CLAUSE ------------------------------
+--Having clause is used to filtr the result of AGGREGATE FUNCTIONS....
+--Having clause is working in combination with GROUP BY
+--Both where condition and HAVING clause are used to filter the data....
+--DIFFERENCE where condition filters the indvidual data BEFORE grouping
+--       HAVING clause filters the result AFTER grouping.....
+
+
+--Find the total number of employees per state that has more than 100,000 employees....
+
+SELECT state, SUM(number_of_employees)
+ 	FROM new_workers
+	GROUP BY state
+	HAVING SUM(number_of_employees) > 100000;  
+
+
+--Find the MAX salary values that are above 7000 per company ....
+
+SELECT company, MAX(salary) AS max_salary_each
+ 	FROM new_workers
+	GROUP BY company
+	HAVING MAX(salary) > 7000;  
+
+
+-- Do practice about where, group by and having clause. You can find 
+
+
+
+SELECT * FROM new_workers;
