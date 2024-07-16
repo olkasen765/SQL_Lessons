@@ -201,4 +201,8 @@ SELECT company, MAX(salary) AS max_salary_each
 -- Do practice about where, group by and having clause. You can find exercise on sqlbot or other websites 
 
 
+
+
+
+
 SELECT * FROM new_workers;
