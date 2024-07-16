@@ -201,6 +201,55 @@ FROM bob_books
 
 
 
-SELECT * FROM alice_books;
-SELECT * FROM bob_books;
-SELECT * FROM john_books;
+SELECT book_title
+	FROM alice_books
+
+	UNION ALL
+	
+SELECT book_title
+	FROM bob_books
+	
+	UNION ALL
+	
+SELECT book_title
+	FROM john_books;
+
+
+-- Create a list of the books read by BOTH Alice and BOB (common values/books)
+
+SELECT book_title AS common
+	FROM alice_books
+
+	INTERSECT
+	
+SELECT book_title
+	FROM bob_books;
+
+
+-- Create a list of the books read by Alice, Bob and John (common values/books)
+
+SELECT book_title AS common
+	FROM alice_books
+
+	INTERSECT
+	
+SELECT book_title
+	FROM bob_books
+	
+	INTERSECT
+	
+SELECT book_title 
+	FROM john_books;
+
+
+
+
+-- Create a list of the books read by Alice BUT NOT by BOB
+
+SELECT book_title
+	FROM alice_books
+
+	EXCEPT
+	
+SELECT book_title
+	FROM bob_books;
