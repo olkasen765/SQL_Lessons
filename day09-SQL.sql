@@ -241,6 +241,14 @@ SELECT book_title
 SELECT book_title 
 	FROM john_books;
 
+--------------------------INTERSECT------------------------------
+--You can use INTERSECT operator 2 or many tables....
+--it returns common values....
+--It returns UNIQUE values(repeted are not possible...)
+--Data type of the columns should be same....
+--Number of the columns in the query should be SAME 
+-- Name can be different...
+--number of the columns in the table can be different....
 
 
 
@@ -253,3 +261,138 @@ SELECT book_title
 	
 SELECT book_title
 	FROM bob_books;
+
+------EXCEPT NOTES
+
+--It is used to combine or unite result of 2 or many tables....
+--It extracts the result of the first query from the result of the second query 
+--Data type should be same
+--Names can be different 
+--number of the columns in the query should be SAME
+--number of the columns in the table can be different...
+
+--=========================================================================
+
+
+
+CREATE TABLE employees_a (
+    employee_id INT PRIMARY KEY,
+    employee_name VARCHAR(30),
+    department VARCHAR(20)
+);
+
+INSERT INTO employees_a (employee_id, employee_name, department)
+VALUES
+    (1, 'John Smith', 'HR'),
+    (2, 'Alice Johnson', 'IT'),
+    (3, 'Bob Williams', 'Finance'),
+    (4, 'Eva Davis', 'Marketing');
+
+CREATE TABLE employees_b (
+    employee_id INT PRIMARY KEY,
+    employee_name VARCHAR(30),
+    department VARCHAR(20)
+);
+INSERT INTO employees_b (employee_id, employee_name, department)
+VALUES
+    (2, 'Alice Johnson', 'IT'),
+    (3, 'Bob Williams', 'Finance'),
+    (5, 'Charlie Brown', 'Sales'),
+    (6, 'Grace Miller', 'HR');
+
+
+SELECT * FROM employees_a;
+SELECT * FROM employees_b;
+
+
+-- Find distinct(unique) list of all employees across both tables.......
+
+SELECT employee_name 
+	FROM employees_a
+	
+	UNION
+
+SELECT employee_name
+	FROM employees_b;
+
+
+-- Find the list of all employees from both tables who work in HR department
+
+SELECT employee_name 
+	FROM employees_a
+		WHERE department = 'HR'
+	
+	UNION ALL
+
+
+SELECT employee_name
+	FROM employees_b
+		WHERE department = 'HR';
+
+
+-- Find all list of employees who are in both tables (common) in IT DEPARTMENT
+
+SELECT * 
+	FROM employees_a
+		WHERE department = 'IT'
+	
+INTERSECT
+
+SELECT *
+	FROM employees_b
+		WHERE department = 'IT';
+
+
+-- Find the employees ffrom employees_a table who are NOT in employees_b table ....
+
+SELECT * 
+	FROM employees_a
+	
+EXCEPT
+
+SELECT *
+	FROM employees_b;
+
+
+
+---------------------------- STRING MANIPULATION ---------------------------
+
+SELECT * FROM new_workers;
+
+-- Retrieve distinct name from new_workers table ......
+
+SELECT DISTINCT name
+FROM new_workers;
+
+-- Retrieve distinct name and their length from new_workers table ...
+
+SELECT DISTINCT name, LENGTH(name)
+FROM new_workers;
+
+
+-- To remove spaces from string ....
+SELECT TRIM(name)
+FROM new_workers;
+
+-- Display state and first 3 character of state name
+
+SELECT state, SUBSTRING(state, 1,3)
+FROM new_workers;
+
+
+-- Display only first letter as CAPS
+
+SELECT INITCAP(company)
+FROM new_workers;
+
+
+-- Display names in upper case and state will be lowercase
+
+SELECT UPPER(name), LOWER(state)
+FROM new_workers;
+
+
+
+
+
+
