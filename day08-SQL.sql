@@ -198,8 +198,7 @@ SELECT company, MAX(salary) AS max_salary_each
 	HAVING MAX(salary) > 7000;  
 
 
--- Do practice about where, group by and having clause. You can find 
-
+-- Do practice about where, group by and having clause. You can find exercise on sqlbot or other websites 
 
 
 SELECT * FROM new_workers;
