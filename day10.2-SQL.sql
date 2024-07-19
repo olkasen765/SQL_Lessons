@@ -40,6 +40,20 @@ INSERT INTO orders VALUES(104, 44, '20-Aug-2023');
 INSERT INTO orders VALUES(105, 55, '21-Oct-2023');
 
 
+
+CREATE TABLE jobs(
+  id CHAR(2),
+  name VARCHAR(20),
+  title VARCHAR(40),
+  manager_id CHAR(2)
+);
+
+INSERT INTO jobs VALUES(1, 'Ali Can', 'SDET', 2);
+INSERT INTO jobs VALUES(2, 'John Walker', 'QA', 3);
+INSERT INTO jobs VALUES(3, 'Angie Star', 'QA Lead', 4);
+INSERT INTO jobs VALUES(4, 'Amy Sky', 'CEO', 5);
+
+
 -- INNER
 -- Find the company name, order_date, order_id for company that exist in both tables ...
 
@@ -67,9 +81,28 @@ SELECT mc.company_name, o.order_id, o.order_date
 	ON mc.company_id = o.company_id;
 
 
+-- SELF JOIN 
+
+-- Find the name of the manager of each employee? 
+
+-- SELF JOIN is NOT available in PostGre SQL, it's available for Oracle ....
+-- SELECT name, manager_id
+--	FROM jobs SELF JOIN orders o
+
+
+SELECT j1.name Manager_Name, j2.name, j2.manager_id
+	FROM jobs j1 INNER JOIN jobs j2
+	ON j1.id = j2.manager_id;
+
+
+
+
+
+SELECT * FROM jobs;
 	
 SELECT * FROM orders;
 SELECT * FROM my_companies;
+
 
 
 
