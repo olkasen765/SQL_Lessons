@@ -87,9 +87,26 @@ SELECT COUNT(*) number_of_students,
 	
 -- Q11 Delete the row with an exam score of 55 ....
 
+DELETE FROM student20
+	WHERE exam_score = 55;
+
+-- Q12 Delete the row with the names Cristiano Ronaldo or Cemal Dogan
+
+DELETE FROM student20
+	WHERE name IN ('Cristiano Ronaldo', 'Cemal Dogan');
+
+-- Q13 DELETE THE CONTENTS OF THE student20 table
+
+DELETE FROM student20;
+
+-- another way 
+
+TRUNCATE TABLE student20;
 
 
+-- Q14 DELETE THE STUDENT TABLE...
 
+DROP TABLE student20;
 
 
 SELECT * FROM student20;
