@@ -121,7 +121,7 @@ UPDATE students
 -- Q15 Uptade the city to Berlin which id is greater than 105 ...
 
 UPDATE students
-	SET city = 'Berlin'
+	SET city = 'Astana'
 	WHERE id > 105;
 
 
