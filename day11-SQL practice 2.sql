@@ -19,6 +19,7 @@ INSERT INTO students VALUES (104, 'Halide E. Adıvar', 'İzmir', 473, 'Psycholog
 INSERT INTO students VALUES (105, 'Nazan Bekiroğlu', 'İzmir', 432, 'Literature');
 INSERT INTO students VALUES (106, 'Peyami Safa', 'Antalya', 535, 'Computer Science');
 INSERT INTO students VALUES (107, 'Sabahattin Ali', 'İstanbul', 492, 'Mathematics');
+INSERT INTO students VALUES (108, 'Joe Beiden', 'Moscow', 547, 'Algebra');
 
 
 --Q1 Retrieve the information of students whose names start with ‘A’
@@ -121,10 +122,11 @@ UPDATE students
 -- Q15 Uptade the city to Berlin which id is greater than 105 ...
 
 UPDATE students
-	SET city = 'Astana'
-	WHERE id > 105;
+	SET id = 108
+	WHERE name = 'Joe Beiden';
 
-
+DELETE FROM students
+	WHERE name = 'Joe Beiden'
 
 
 SELECT * FROM students;
