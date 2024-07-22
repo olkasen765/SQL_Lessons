@@ -20,6 +20,7 @@ INSERT INTO students VALUES (105, 'Nazan Bekiroğlu', 'İzmir', 432, 'Literature
 INSERT INTO students VALUES (106, 'Peyami Safa', 'Antalya', 535, 'Computer Science');
 INSERT INTO students VALUES (107, 'Sabahattin Ali', 'İstanbul', 492, 'Mathematics');
 INSERT INTO students VALUES (108, 'Joe Beiden', 'Moscow', 547, 'Algebra');
+INSERT INTO students VALUES (109, 'Donald Trumph', 'New-York', 447, 'Computer Science');
 
 
 --Q1 Retrieve the information of students whose names start with ‘A’
