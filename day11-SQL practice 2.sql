@@ -123,8 +123,8 @@ UPDATE students
 -- Q15 Uptade the city to Berlin which id is greater than 105 ...
 
 UPDATE students
-	SET id = 108
-	WHERE name = 'Joe Beiden';
+	SET score = 646
+	WHERE id = 100;
 
 DELETE FROM students
 	WHERE name = 'Joe Beiden'
