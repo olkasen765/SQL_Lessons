@@ -127,8 +127,15 @@ UPDATE students
 	WHERE id = 100;
 
 DELETE FROM students
-	WHERE name = 'Joe Beiden'
+	WHERE name = 'Joe Beiden';
 
+DELETE FROM students
+	WHERE city = 'New-York';
+
+SELECT COUNT(id) 
+	FROM students;
+
+	
 
 SELECT * FROM students;
 
