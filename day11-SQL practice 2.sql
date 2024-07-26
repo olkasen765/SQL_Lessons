@@ -130,14 +130,15 @@ DELETE FROM students
 	WHERE name = 'Joe Beiden';
 
 DELETE FROM students
-	WHERE city = 'New-York';
+	WHERE id BETWEEN 104 AND 107;
 
 SELECT COUNT(id) 
 	FROM students;
 
 	
 
-SELECT * FROM students;
+SELECT * FROM students
+	ORDER BY id;
 
 
 
