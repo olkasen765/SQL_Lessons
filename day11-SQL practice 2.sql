@@ -135,7 +135,7 @@ DELETE FROM students
 SELECT COUNT(id) 
 	FROM students;
 
-	
+INSERT INTO students VALUES (009, 'Sunday', 'Austin', 667, 'QA');
 
 SELECT * FROM students
 	ORDER BY id;
