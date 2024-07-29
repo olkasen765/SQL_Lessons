@@ -136,9 +136,10 @@ SELECT COUNT(id)
 	FROM students;
 
 INSERT INTO students VALUES (009, 'Sunday', 'Austin', 667, 'QA');
+INSERT INTO students VALUES (909, 'Monday', 'Austin', 668, 'QA');
 
 SELECT * FROM students
-	ORDER BY id;
+	ORDER BY id DESC;
 
 
 
