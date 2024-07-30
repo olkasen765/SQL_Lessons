@@ -127,7 +127,7 @@ UPDATE students
 	WHERE id = 100;
 
 DELETE FROM students
-	WHERE name = 'Joe Beiden';
+	WHERE name = 'Tueasday';
 
 DELETE FROM students
 	WHERE id BETWEEN 104 AND 107;
@@ -137,6 +137,9 @@ SELECT COUNT(id)
 
 INSERT INTO students VALUES (009, 'Sunday', 'Austin', 667, 'QA');
 INSERT INTO students VALUES (909, 'Monday', 'Austin', 668, 'QA');
+INSERT INTO students VALUES (910, 'Tuesday', 'Austin', 669, 'QA');
+
+
 
 SELECT * FROM students
 	ORDER BY id DESC;
