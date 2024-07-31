@@ -138,6 +138,7 @@ SELECT COUNT(id)
 INSERT INTO students VALUES (009, 'Sunday', 'Austin', 667, 'QA');
 INSERT INTO students VALUES (909, 'Monday', 'Austin', 668, 'QA');
 INSERT INTO students VALUES (910, 'Tuesday', 'Austin', 669, 'QA');
+INSERT INTO students VALUES (911, 'Wednesday', 'Austin', 670, 'QA');
 
 
 
