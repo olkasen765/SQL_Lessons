@@ -16,6 +16,8 @@ INSERT INTO customers_products VALUES (30, 'Anna Goldman', 'Mango');
 INSERT INTO customers_products VALUES (50, 'Helen Green', 'Grapes');
 INSERT INTO customers_products VALUES (10, 'Laura Owen', 'PineApple');
 
+SELECT * FROM customers_products;
+
 
 ---- IN AND NOT IN OPERATORS -------
 
