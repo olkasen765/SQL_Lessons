@@ -33,7 +33,7 @@ SELECT *
 
 SELECT *
 	FROM students
-	WHERE name LIKE '%i';
+	WHERE city LIKE 'An%';
 
 --Q3 Retrieve the information of students names start with letter ‘A’ and are in the Computer Science department
 
