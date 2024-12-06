@@ -95,6 +95,15 @@ INSERT INTO employees (age, name, salary, email) VALUES (19, 'Melik', 90000, 'mn
 
 INSERT INTO employees (name, age, salary, email) VALUES (20, 'Kerem', 10000, 'kk@gmail.com'); -- this will be error because data wrong matching
 
+INSERT 
+	INTO employees (age, name, salary, email) 
+	VALUES (25, 'John', 86000, 'jw@gmail.com');
+
+INSERT 
+	INTO employees (age, name, salary, email) 
+	VALUES (31, 'Wallas', 96000, 'ww@gmail.com');
+
+
 
 SELECT * FROM employees;
 
