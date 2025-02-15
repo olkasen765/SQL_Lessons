@@ -51,6 +51,7 @@ INSERT INTO students VALUES ('03', 'Emma Wat', 23, '2020-01-10');
 INSERT INTO students (name, age) VALUES ('Alex', 46);
 INSERT INTO students (id, name) VALUES ('04', 'Anisa');
 INSERT INTO students (id, name) VALUES ('05', 'Nataliya');
+INSERT INTO students (id, name) VALUES ('06', 'Adam');
 INSERT INTO students (age, register_date) VALUES (22, '2018-12-23');
 
 
