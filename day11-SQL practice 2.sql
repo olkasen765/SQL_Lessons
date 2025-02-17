@@ -58,13 +58,13 @@ SELECT *
 
 SELECT *
 	FROM students
-	WHERE LENGTH(name) > 12;
+	WHERE LENGTH(name) > 10;
  
 -- Q7 Retrieve the information of students whose 4th character in theri name is ‘a’
 
 SELECT *
 	FROM students
-	WHERE name LIKE '___a%';
+	WHERE name LIKE '_a%';
 
 -- Q8 Retrieve the information of students whose names contain the letters ‘z’ or ‘k’
 
